@@ -23,9 +23,9 @@ class LinearRegression():
         r""" 
         Predicts output given input data
         """
-        out = self.slope * data + self.intercept
+        out = np.dot(self.slope, data.T) + self.intercept
         self.d = data
-        return out
+        return out.T
     
     def MSEloss(self,predicted, true):
         r"""
@@ -62,8 +62,10 @@ noise = np.random.randn(100,1)
 y_true = 3 * x + 2 + 0.2 * noise 
 
 #%% Initiate model
+slope = np.random.rand(1,1)
+intercept = np.random.rand(1,1)
 
-model = LinearRegression(slope= 1,intercept= 0.2, lr= 0.01)
+model = LinearRegression(slope= slope,intercept= intercept, lr= 0.01)
 
 
 #%%
@@ -76,7 +78,7 @@ print('Intercept : ', model.intercept)
 
 losses = np.array([])
 
-for i in range(100000):
+for i in range(1000):
     
     y_pred = model.predict(x)
     
