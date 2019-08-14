@@ -1,2 +1,2 @@
 # Machine-Learning
-Contains machine learning projects
+Contains short example projects of machine learning
